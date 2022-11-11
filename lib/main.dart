@@ -1,15 +1,46 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'camera.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+
+Future<void> main() async {
+  // 디바이스에서 이용가능한 카메라 목록을 받아옵니다.
+  final cameras = await availableCameras();
+
+  // 이용가능한 카메라 목록에서 특정 카메라를 얻습니다.
+  final firstCamera = cameras.first;
+
+  runApp(
+    MaterialApp(
+      theme: ThemeData.dark(),
+      home: CameraExample(
+        // 적절한 카메라를 TakePictureScreen 위젯에게 전달합니다.
+        camera: firstCamera,
+      ),
+    ),
+  );
+}
+
+class TakePictureScreen {
+}
 
 class MyApp extends StatelessWidget {
   final appTitle = '다발성 모반 측정';
+
+  // const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appTitle,
-      home: MyHomePage(title: appTitle),
+      theme: ThemeData(
+
+        primarySwatch: Colors.green,
+      ),
+      home: MyHomePage(title: '다발성 모반',),
     );
   }
 }
@@ -23,7 +54,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
-          child: Container(
+        child: Container(
             width: 160,
             height: 160,
             child: Center(
@@ -33,9 +64,8 @@ class MyHomePage extends StatelessWidget {
                         fontSize: 45,
                         fontWeight: FontWeight.w600,
                         color: Colors.white
-
                     )
-                )
+                ),
             ),
             decoration: BoxDecoration(
                 color: Colors.white24,
@@ -112,29 +142,6 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: '메뉴',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '홈',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: '환경 설정'
-          ),
-        ],
-        onTap: (index){
-          _idx = index;
-        },
-        currentIndex: _idx,
-      ),
     );
   }
 }
-
-int _idx = 0;
