@@ -2,8 +2,9 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'camera.dart';
 
-// void main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
+/*
 Future<void> main() async {
   // 디바이스에서 이용가능한 카메라 목록을 받아옵니다.
   final cameras = await availableCameras();
@@ -24,7 +25,7 @@ Future<void> main() async {
 
 class TakePictureScreen {
 }
-
+*/
 class MyApp extends StatelessWidget {
   final appTitle = '다발성 모반 측정';
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: '다발성 모반',),
+      home: CameraExample(),// home: MyHomePage(title: '다발성 모반',),
     );
   }
 }
