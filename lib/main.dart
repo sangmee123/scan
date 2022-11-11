@@ -23,33 +23,33 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
-          child: Container(
-            width: 160,
-            height: 160,
-            child: Center(
-                child: Text(
-                    "Scan",
-                    style: TextStyle(
-                        fontSize: 45,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white
+        child: Container(
+          width: 160,
+          height: 160,
+          child: Center(
+              child: Text(
+                  "Scan",
+                  style: TextStyle(
+                      fontSize: 45,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
 
-                    )
-                )
-            ),
-            decoration: BoxDecoration(
-                color: Colors.white24,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blueGrey.shade700.withOpacity(0.7),
-                    blurRadius: 5.0,
-                    spreadRadius: 0.0,
-                    offset: const Offset(0,7),
                   )
-                ]
-            ),
+              )
           ),
+          decoration: BoxDecoration(
+              color: Colors.white24,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blueGrey.shade700.withOpacity(0.7),
+                  blurRadius: 5.0,
+                  spreadRadius: 0.0,
+                  offset: const Offset(0,7),
+                )
+              ]
+          ),
+        ),
       ),
 
       drawer: Drawer(
@@ -69,38 +69,29 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+            SwitchListTile(
+              title: const Text('알림 허용'),
+              subtitle: const Text('알림 수신 여부를 설정합니다.'),
+              value: true,
+              activeTrackColor: Colors.pink[100],
+              activeColor: Colors.red,
+              onChanged: (value) {},
+            ),
+            Divider(color: Colors.black45),
+
+            SwitchListTile(
+              title: const Text('진동 허용'),
+              subtitle: const Text('진동 해제 시 무음'),
+              value: true,
+              activeTrackColor: Colors.pink[100],
+              activeColor: Colors.red,
+              onChanged: (value) {},
+            ),
+            Divider(color: Colors.black45),
+
             ListTile(
               title: Text('알림 시간대 설정'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('앱 기본 정보'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('앱 사용법'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('이용 약관'),
+              trailing: const Icon(Icons.navigate_next),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -116,8 +107,8 @@ class MyHomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: '메뉴',
+            icon: Icon(Icons.menu),
+            label: '메뉴',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
